@@ -99,3 +99,27 @@ mysql -u root -p
 ```
 5. Link, ScanAP, CarFiScanAP: these tables are not used.
 
+
+# The raw data
+
+Link to the raw data: <URL>  
+
+## Description of the raw data
+
+The tarball includes the raw data collected from four cities. In the directory of each city, there are many tarballs named as <city>-<start_time>-<end_time>.tar.gz. In each tarball, the data including association logs, DHCP logs, and TCP performance data are archived.
+
+In each experiment tarball, there are some log files and a directory, e.g. `gps.log  linkmon.log  roamingd.log  tester.data  wpa_supplicant.log`. `gps.log` stores the GPS coordinates during the experiment. `wpa_supplicant.log` stores the WiFi association logs. `roamingd.log` stores the DHCP logs. The `tester.data` directory contains the data of all TCP performance tests. The data of each TCP performance test are stored in the sub-directory named as the number of that TCP test. 
+  
+In each TCP test sub-directory, there are two key files, `tcp_tester.profile` and `flows.pcap`. The first one includes the information as follows.
+  
+```
+1579131540.566103 (TCP connections start time) 
+1579131622.562806 (TCP connections end time)
+upload (tranmission direction)
+bbr (congestion control scheme)
+41689088 (total bytes transferred)
+1 (number of concurrent flows)
+100.64.250.250 44918 149.248.15.30 5001 (the list of the 4-tuple of all TCP flows)
+```
+
+The `flows.pcap` file stores the packet traces of the TCP test.
